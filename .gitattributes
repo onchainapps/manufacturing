@@ -1,0 +1,4 @@
+videos/spaceprinter_hedlessetup.mp4 filter=lfs diff=lfs merge=lfs -text
+videos/spaceprinter_howtoburn.mp4 filter=lfs diff=lfs merge=lfs -text
+videos/spaceprinter_settingupprinter.mp4 filter=lfs diff=lfs merge=lfs -text
+videos/spaceprinter_v0.4beta.mp4 filter=lfs diff=lfs merge=lfs -text

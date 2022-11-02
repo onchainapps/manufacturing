@@ -1,0 +1,918 @@
+{
+  "openrpc": "1.2.6",
+  "info": {
+    "title": "spaceprinter",
+    "version": "0.7.0-beta",
+    "description": "Space Printer: dapp for raspberry to allow your 3D printer to access Adosia market place on cardano"
+  },
+  "methods": [
+    {
+      "name": "initDevice",
+      "description" : "Checks devie config for nodes running an dserives running and enables them",
+      "params" : [],
+      "result": {
+        "name": "initDeviceResult",
+        "description": "Returns Cardano and Printer Info",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "createUser",
+      "description" : "Creates user for Cardano Box",
+      "params" : [
+        {
+          "$ref": "#/components/contentDescriptors/userName"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/password"
+          
+        }
+      ],
+      "result": {
+        "name": "createUserRes",
+        "description": "Returns query response",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "loginUser",
+      "description" : "Logs user in and generate JWT token",
+      "params" : [
+        {
+          "$ref": "#/components/contentDescriptors/userName"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/password"
+          
+        }
+      ],
+      "result": {
+        "name": "loginUserRes",
+        "description": "Returns query response",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "resetUser",
+      "description" : "This should be used as a last result when user forgets their password to Cardano Box.",
+      "params" : [],
+      "result": {
+        "name": "resetUserRes",
+        "description": "Returns query response",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "genCBWallet",
+      "description" : "Creates cardanobox wallet",
+      "params" : [
+        {
+          "$ref": "#/components/contentDescriptors/jwToken"
+          
+        },
+        {
+          "$ref": "#/components/contentDescriptors/userName"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/walletName"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/seedPhrase"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/walletPassPhrase"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/walletType"
+        }
+      ],
+      "result": {
+        "name": "genCBWalletResult",
+        "description": "Returns wallet info and seed phrase if one was generated",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "genCBWalletAccount",
+      "description" : "Creates a new account on same seed and creates a new address for it.",
+      "params" : [
+        {
+          "$ref": "#/components/contentDescriptors/jwToken"
+          
+        },
+        {
+          "$ref": "#/components/contentDescriptors/userName"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/walletID"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/accountName"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/walletPassPhrase"
+        }
+      ],
+      "result": {
+        "name": "genCBWalletAccountResult",
+        "description": "Returns generated address",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "genPrinterWallet",
+      "description": "Creates Space Printer wallet",
+      "params": [
+        {
+          "$ref": "#/components/contentDescriptors/jwToken"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/userName"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/walletName"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/seedPhrase"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/walletPassPhrase"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/walletType"
+        }
+      ],
+      "result": {
+        "name": "genPrinterWalletResult",
+        "description": "Returns wallet info and seed phrase if one was generated",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "getCBWallets",
+      "description": "querries cardanobox db for wallets",
+      "params":[
+        {
+          "$ref": "#/components/contentDescriptors/jwToken"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/userName"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/walletID"
+        }
+      ],
+      "result": {
+        "name": "getCBWalletsResult",
+        "description": "Returns array of objects of wallet exits",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "delCBWallet",
+      "description": "Deletes cardano box wallet",
+      "params":[
+        {
+          "$ref": "#/components/contentDescriptors/jwToken"
+          
+        },
+        {
+          "$ref": "#/components/contentDescriptors/userName"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/walletID"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/accountName"
+        }
+      ],
+      "result": {
+        "name": "delCBWalletResult",
+        "description": "Returns status of deletion",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "genGruntTX",
+      "description": "",
+      "params":[
+        {
+          "$ref": "#/components/contentDescriptors/jwToken"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/userName"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/walletID"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/walletPassPhrase"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/accountName"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/utxos"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/assets"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/metadata"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/outputs"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/changeAddress"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/txTTL"
+        }
+      ],
+      "result": {
+        "name": "genGruntTXResult",
+        "description": "Returns signed TX cbor and submits if elected to.",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "editConfig",
+      "description" : "Edits dapp config",
+      "params" : [
+        {
+          "$ref": "#/components/contentDescriptors/jwToken"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/userName"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/configjson"
+        }
+      ],
+      "result": {
+        "name": "editConfigResult",
+        "description": "returns config status",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "sendCmdToPrinter",
+      "description" : "sends gcode command to connacted printer.",
+      "params" : [
+        {
+          "$ref": "#/components/contentDescriptors/jwToken"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/userName"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/gcode"
+          
+        }
+      ],
+      "result": {
+        "name": "sendCmdToPrinterResult",
+        "description": "Returns printer response",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "downloadFile",
+      "description" : "Downlaods 3D file to device for slicing and printing.",
+      "params" : [
+        {
+          "$ref": "#/components/contentDescriptors/jwToken"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/userName"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/fileURL" 
+        },
+        {
+          "$ref": "#/components/contentDescriptors/fileName" 
+        }
+      ],
+      "result": {
+        "name": "downloadFileResult",
+        "description": "Returns download status",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "update",
+      "description" : "Updates spaceprinter software.",
+      "params" : [
+        {
+          "$ref": "#/components/contentDescriptors/jwToken"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/userName"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/updateType" 
+        }
+      ],
+      "result": {
+        "name": "updateResult",
+        "description": "Returns update status",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "changeDeviceName",
+      "description" : "Changes devices hostname and updates it.",
+      "params" : [
+        {
+          "$ref": "#/components/contentDescriptors/jwToken"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/userName"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/hostname"
+        }
+      ],
+      "result": {
+        "name": "changeDeviceNameResult",
+        "description": "Returns updated hostname status",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "manageWifi",
+      "description" : "Changes devices hostname and updates it.",
+      "params" : [
+        {
+          "$ref": "#/components/contentDescriptors/jwToken"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/userName"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/wifiAction"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/ssid"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/ssidPass"
+        }
+      ],
+      "result": {
+        "name": "manageWifiResult",
+        "description": "Returns action results for wifi",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "genSSL",
+      "description" : "Generate new ssl cert.",
+      "params" : [
+        {
+          "$ref": "#/components/contentDescriptors/jwToken"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/userName"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/sslCommonName"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/sslCountry"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/sslLocation"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/sslOrg"
+        }
+      ],
+      "result": {
+        "name": "manageWifiResult",
+        "description": "Returns action results for wifi",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "name": "estimateShipping",
+      "description": "Useshipping Engine to estimate shipping",
+      "params" : [
+        {
+          "$ref": "#/components/contentDescriptors/jwToken"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/userName"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/shipengineAPI"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/carrierIDs"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/fromCountryCode"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/fromPostalCode"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/toCountryCode"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/toPostalCode"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/weightUnits"
+        },
+        {
+          "$ref": "#/components/contentDescriptors/weightAmount"
+        }
+        
+      ],
+      "result": {
+        "name": "estimateShippingResult",
+        "description": "returns estimate shipping.",
+        "schema": {
+          "type": "string"
+        }
+      }
+    }
+  ],
+  "components": {
+    "contentDescriptors": {
+      "userName": {
+        "name": "userName",
+        "description": "Cardano Box Username",
+        "required": true,
+        "schema": {
+          "title": "userName",
+          "type": "string"
+        }
+      },
+      "password": {
+        "name": "password",
+        "description": "Cardano Box user password",
+        "required": true,
+        "schema": {
+          "title": "password",
+          "type": "string"
+        }
+      },
+      "jwToken": {
+        "name": "jwToken",
+        "description": "Token created on login",
+        "required": true,
+        "schema": {
+          "title": "jwToken",
+          "type": "string"
+        }
+      },
+      "accountType": {
+        "name": "accountType",
+        "description": "Not used for anyhting yet",
+        "required": true,
+        "schema": {
+          "title": "accountType",
+          "type": "string"
+        }
+      },
+      "sessionType": {
+        "name": "sessionType",
+        "description": "Not used for anyhting yet",
+        "required": true,
+        "schema": {
+          "title": "sessionType",
+          "type": "string",
+          "enum": [ "cardanobox", "remote", "blockfrost"]
+        }
+      },
+      "adaAddress": {
+        "name": "adaAddress",
+        "description": "unique device ada Address",
+        "required": true,
+        "schema": {
+          "title": "adaAddress",
+          "type": "string"
+        }
+      },
+      "seedSize": {
+        "name": "seedSize",
+        "description": "9, 12, 15, 18, 21 or 24 words",
+        "required": true,
+        "schema": {
+          "title": "seedSize",
+          "type": "number",
+          "enum": [ 0, 9, 12, 15, 18, 21, 24 ]
+        }
+      },
+      "seedPhrase": {
+        "name": "seedPhrase",
+        "description": "Seed Phrase used to recover address",
+        "required": true,
+        "schema": {
+          "title": "seedPhrase",
+          "type": "string"
+        }
+      },
+      "walletName": {
+        "name": "walletName",
+        "description": "Unique User wallet name",
+        "required": true,
+        "schema": {
+          "title": "walletName",
+          "type": "string"
+        }
+      },
+      "xpubKey": {
+        "name": "xpubKey",
+        "description": "An extended account public key",
+        "required": true,
+        "schema": {
+          "title": "xpubKey",
+          "type": "string"
+        }
+      },
+      "walletPassPhrase": {
+        "name": "walletPassPhrase",
+        "description": "Secret Passphrase for wallet to unlock for TXs",
+        "required": true,
+        "schema": {
+          "title": "walletPassPhrase",
+          "type": "string"
+        }
+      },
+      "walletType": {
+        "name": "walletType",
+        "description": "Type of wallet, space printer or gen cardano",
+        "required": true,
+        "schema": {
+          "title": "walletType",
+          "type": "string",
+          "enum": [ "general", "printer" ]
+        }
+      },
+      "walletID": {
+        "name": "walletID",
+        "description": "Wallet ID",
+        "required": true,
+        "schema": {
+          "title": "walletID",
+          "type": "string"
+        }
+      },
+      "addressType": {
+        "name": "addressType",
+        "description": "Type of address being generated",
+        "required": true,
+        "schema": {
+          "title": "addressType",
+          "type": "string",
+          "enum": ["base", "enterprise", "pointer", "reward", "byron"]
+        }
+      },
+      "addressName": {
+        "name": "addressName",
+        "description": "Name for address",
+        "required": true,
+        "schema": {
+          "title": "addressName",
+          "type": "string"
+        }
+      },
+      "accountName": {
+        "name": "accountName",
+        "description": "Name for wallet account",
+        "required": true,
+        "schema": {
+          "title": "accountName",
+          "type": "string"
+        }
+      },
+      "configjson": {
+        "name": "configjson",
+        "description": "json string of config",
+        "required": true,
+        "schema": {
+          "title": "configjson",
+          "type": "string"
+        }
+      },
+      "fileURL": {
+        "name": "fileURL",
+        "description": "location of file to download",
+        "required": true,
+        "schema": {
+          "title": "fileURL",
+          "type": "string"
+        }
+      },
+      "fileName": {
+        "name": "fileName",
+        "description": "name of file for saving or whatever else.",
+        "required": true,
+        "schema": {
+          "title": "fileName",
+          "type": "string"
+        }
+      },
+      "gcode": {
+        "name": "gcode",
+        "description": "name of file for saving or whatever else. ",
+        "required": true,
+        "schema": {
+          "title": "gcode",
+          "type": "string"
+        }
+      },
+      "updateType": {
+        "name": "updateType",
+        "description": "Update type: full, incremental.",
+        "required": true,
+        "schema": {
+          "title": "updateType",
+          "type": "string",
+          "enum": [ "full", "update", "ui" ]
+        }
+      },
+      "txix": {
+        "name": "txix",
+        "description": "txix for TX input",
+        "required": true,
+        "schema": {
+          "title": "txix",
+          "type": "string"
+        }
+      },
+      "txixIndex": {
+        "name": "txixIndex",
+        "description": "txix index",
+        "required": true,
+        "schema": {
+          "title": "txixIndex",
+          "type": "number"
+        }
+      },
+      "inputValue": {
+        "name": "inputValue",
+        "description": "input value or amount if lovelace your subtracting for the input txix",
+        "required": true,
+        "schema": {
+          "title": "inputValue",
+          "type": "string"
+        }
+      },
+      "outputAddress": {
+        "name": "outputAddress",
+        "description": "usually address receiving asset or lovelace",
+        "required": true,
+        "schema": {
+          "title": "outputAddress",
+          "type": "string"
+        }
+      },
+      "outputValue": {
+        "name": "outputValue",
+        "description": "amount of asset or lovelace associated with outputAddress",
+        "required": true,
+        "schema": {
+          "title": "outputValue",
+          "type": "string"
+        }
+      },
+      "changeAddress": {
+        "name": "changeAddress",
+        "description": "Address that will receive left over fee change",
+        "required": true,
+        "schema": {
+          "title": "changeAddress",
+          "type": "string"
+        }
+      },
+      "txTTL": {
+        "name": "txTTL",
+        "description": "Address that will receive left over fee change",
+        "required": true,
+        "schema": {
+          "title": "txTTL",
+          "type": "number"
+        }
+      },
+      "utxos": {
+        "name": "utxos",
+        "description": "Stringified array of utxo objects [{ txix: string, txIndex: number, inputValue: string }]",
+        "required": true,
+        "schema": {
+          "title": "utxos",
+          "type": "string"
+        }
+      },
+      "outputs": {
+        "name": "outputs",
+        "description": "Stringified array output addresses and values and datum info. [{ outputAddress: string, outputValue: string, datums: [{ datumType: byte|int, datumValue: string, byteType: hex|utf8 }] }] ",
+        "required": true,
+        "schema": {
+          "title": "outputs",
+          "type": "string"
+        }
+      },
+      "assets": {
+        "name": "assets",
+        "description": "Stringified array of asset objects [{ policyID: string, assetName: string, assetAmount: string }] ",
+        "required": true,
+        "schema": {
+          "title": "assets",
+          "type": "string"
+        }
+      },
+      "metadata": {
+        "name": "metadata",
+        "description": "Stringified array of metadata objects [{ label: string, metadata: stringified object }] ",
+        "required": true,
+        "schema": {
+          "title": "metadata",
+          "type": "string"
+        }
+      },
+      "hostname": {
+        "name": "hostname",
+        "description": "device hostname ",
+        "required": true,
+        "schema": {
+          "title": "hostname",
+          "type": "string"
+        }
+      },
+      "wifiAction": {
+        "name": "wifiAction",
+        "description": "scan/connect/disconnect",
+        "required": true,
+        "schema": {
+          "title": "wifiAction",
+          "type": "string"
+        }
+      },
+      "ssid": {
+        "name": "ssid",
+        "description": "Name of SSID connecting to.",
+        "required": true,
+        "schema": {
+          "title": "ssid",
+          "type": "string"
+        }
+      },
+      "ssidPass": {
+        "name": "ssidPass",
+        "description": "Password of ssid attemtion conneciton to.",
+        "required": true,
+        "schema": {
+          "title": "ssidPass",
+          "type": "string"
+        }
+      },
+      "sslCommonName": {
+        "name": "sslCommonName",
+        "description": "Common name for ssl cert or fqdn eg: spaceprinter.local.",
+        "required": true,
+        "schema": {
+          "title": "sslCommonName",
+          "type": "string"
+        }
+      },
+      "sslCountry": {
+        "name": "sslCountry",
+        "description": "SSL Country two letter eg: US.",
+        "required": true,
+        "schema": {
+          "title": "sslCountry",
+          "type": "string"
+        }
+      },
+      "sslLocation": {
+        "name": "sslLocation",
+        "description": "SSL location eg: The underground.",
+        "required": true,
+        "schema": {
+          "title": "sslLocation",
+          "type": "string"
+        }
+      },
+      "sslOrg": {
+        "name": "sslOrg",
+        "description": "SSL organication Name eg: The House of Printers.",
+        "required": true,
+        "schema": {
+          "title": "sslOrg",
+          "type": "string"
+        }
+      },
+      "fromCountryCode": {
+        "name": "fromCountryCode",
+        "description": "Two letter ISO from shipping from Country",
+        "required": true,
+        "schema": {
+          "title": "fromCountryCode",
+          "type": "string"
+        }
+      },
+      "fromPostalCode": {
+        "name": "fromPostalCode",
+        "description": "",
+        "required": true,
+        "schema": {
+          "title": "fromPostalCode",
+          "type": "string"
+        }
+      },
+      "toCountryCode": {
+        "name": "toCountryCode",
+        "description": "",
+        "required": true,
+        "schema": {
+          "title": "toCountryCode",
+          "type": "string"
+        }
+      },
+      "toPostalCode": {
+        "name": "toPostalCode",
+        "description": "",
+        "required": true,
+        "schema": {
+          "title": "toPostalCode",
+          "type": "string"
+        }
+      },
+      "carrierIDs": {
+        "name": "carrierIDs",
+        "description": "",
+        "required": true,
+        "schema": {
+          "title": "carrierIDs",
+          "type": "array"
+        }
+      },
+      "weightUnits": {
+        "name": "weightUnits",
+        "description": "",
+        "required": true,
+        "schema": {
+          "title": "weightUnits",
+          "type": "string"
+        }
+      },
+      "weightAmount": {
+        "name": "weightAmount",
+        "description": "",
+        "required": true,
+        "schema": {
+          "title": "weightAmount",
+          "type": "string"
+        }
+      },
+      "shipengineAPI": {
+        "name": "shipengineAPI",
+        "description": "",
+        "required": true,
+        "schema": {
+          "title": "shipengineAPI",
+          "type": "string"
+        }
+      }
+    }
+  }
+}

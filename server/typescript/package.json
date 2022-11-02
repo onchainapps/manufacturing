@@ -1,0 +1,61 @@
+{
+  "name": "spaceprinterapi",
+  "private": false,
+  "version": "0.7.0-beta",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/open-rpc/generator-client.git"
+  },
+  "main": "./build/index.js",
+  "files": [
+    "build/**/*",
+    ".node-version"
+  ],
+  "scripts": {
+    "start": "npm run build && node ./build/index.js",
+    "build": "tsc",
+    "createFull": "npm run build && npm run nexeBuild && tar -C ./app/ -czvf ./updates/spaceprinterInstall.tgz . && tar -C ./app/ -czvf ./updates/spaceprinterUpdate.tgz spaceprinter ./node_modules/ ./updateFiles ./cert",
+    "createUpdate": "npm run build && npm run nexeBuild && tar -C ./app/ -czvf ./updates/spaceprinterUpdate.tgz spaceprinter ./node_modules/ ./updateFiles ./cert",
+    "uploadUpdate": "uplink cp updates/spaceprinterInstall.tgz sj://spaceprinter && uplink cp updates/spaceprinterUpdate.tgz sj://spaceprinter",
+    "nexeBuild": "nexe build/index.js -b -p python3 -t arm64-16.3.0 -o app/spaceprinter",
+    "test": "npm run test:lint && npm run test:unit",
+    "test:unit": "jest --coverage",
+    "test:lint": "tslint -c tslint.json 'src/**/*.ts' --fix",
+    "watch:build": "tsc --watch",
+    "watch:test": "jest --watch"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "@dcspark/cardano-multiplatform-lib-nodejs": "0.3.0",
+    "@emurgo/cardano-serialization-lib-nodejs": "10.1.0",
+    "@open-rpc/schema-utils-js": "^1.12.0",
+    "@open-rpc/server-js": "^1.6.2",
+    "@types/bcrypt": "^5.0.0",
+    "@types/node-fetch": "^2.6.1",
+    "bcrypt": "^5.0.1",
+    "bip39": "^3.0.4",
+    "i": "^0.3.7",
+    "jsonwebtoken": "^8.5.1",
+    "node-libcurl": "^2.3.3",
+    "passwd-linux": "https://github.com/bakon11/passwd-linux/raw/v2.0/passwd-linux-2.0.0.tgz",
+    "serialport": "^9.2.8",
+    "sqlite": "^4.0.23",
+    "sqlite3": "^5.0.3",
+    "ws": "^8.7.0"
+  },
+  "devDependencies": {
+    "@open-rpc/meta-schema": "^1.6.0",
+    "@types/connect": "^3.4.33",
+    "@types/cors": "^2.8.6",
+    "@types/jest": "25.1.0",
+    "@types/jsonwebtoken": "^8.5.8",
+    "@types/sqlite3": "^3.1.8",
+    "@types/ws": "^8.2.2",
+    "jest": "^25.1.0",
+    "ts-jest": "25.0.0",
+    "tslint": "6.0.0",
+    "typescript": "3.7.5"
+  }
+}

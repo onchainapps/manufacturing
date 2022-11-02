@@ -1,0 +1,75 @@
+{
+  "name": "spaceprinterui",
+  "version": "0.7.0-beta",
+  "homepage": "./",
+  "description": "",
+  "main": "build/index.js",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "createUpdate": "npm run build && tar -czvf ./updates/spaceprinterui.tgz -C build/ .",
+    "uploadUpdate": "uplink cp updates/spaceprinterui.tgz sj://spaceprinter",
+    "lint": "tslint --fix -p .",
+    "test": "npm run lint && react-scripts test --coverage --passWithNoTests",
+    "preinstall": "npm install --package-lock-only --ignore-scripts && npx npm-force-resolutions"
+  },
+  "author": "",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@types/jest": "^24.0.13",
+    "@types/react": "17.0.1",
+    "@types/react-dom": "17.0.1",
+    "@types/react-router-dom": "^5.3.2",
+    "@types/three": "^0.134.0",
+    "@types/websocket": "^1.0.4",
+    "dotenv": "^10.0.0",
+    "jest": "^24.7.1",
+    "react-scripts": "^3.0.1",
+    "ts-jest": "^24.0.2",
+    "tslint": "^5.17.0",
+    "typescript": "^4.4.3"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@emotion/react": "^11.8.2",
+    "@emotion/styled": "^11.8.1",
+    "@material-ui/core": "^4.5.1",
+    "@material-ui/icons": "^4.5.1",
+    "@mui/icons-material": "^5.6.2",
+    "@mui/material": "^5.5.3",
+    "@mui/x-data-grid": "^5.7.0",
+    "@react-three/fiber": "^7.0.21",
+    "fetch-to-curl": "^0.5.2",
+    "i18next": "^17.3.0",
+    "i18next-browser-languagedetector": "^4.0.0",
+    "moment": "^2.24.0",
+    "react": "17.0.1",
+    "react-colorful": "^5.5.1",
+    "react-dom": "17.0.1",
+    "react-i18next": "^10.13.1",
+    "react-router-dom": "^5.2.0",
+    "spaceprinterclient": "https://github.com/adosia/spaceprinterapi/raw/master/client/typescript/spaceprinterclient.tgz",
+    "three": "^0.135.0",
+    "use-dark-mode": "^2.3.1",
+    "websocket": "^1.0.34"
+  },
+  "overrides": {
+    "@types/react": "17.0.1",
+    "@types/react-dom": "17.0.1"
+  },
+  "resolutions": {
+    "@types/react": "17.0.1",
+    "@types/react-dom": "17.0.1"
+  }
+}

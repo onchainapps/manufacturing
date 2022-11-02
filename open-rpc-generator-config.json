@@ -1,0 +1,16 @@
+{
+    "openrpcDocument": "openrpc.json",
+    "outDir": "./",
+    "components": [
+        {
+            "type": "client",
+            "name": "spaceprinterclient",
+            "language": "typescript"
+        },
+        {
+            "type": "server",
+            "name": "spaceprinterapi",
+            "language": "typescript"
+        }
+    ]
+}

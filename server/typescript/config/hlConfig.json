@@ -1,0 +1,6 @@
+{
+    "wifiEnabled": 0,
+    "ssid": "ssidName",
+    "ssidPass": "ssidPass",
+    "blockfrostAPI": ""
+}
