@@ -39,11 +39,13 @@ export const entropyToRoot = async ( entropy: any ) => {
 };
 
 export const genAccountKeyPrv = async (rootKey: any, purpose: number, coinType: number, accIndex: number ) => {
+  purpose: number = 1852;
+  coinType: number = 1815;
   try{
     return await rootKey
-      .derive(harden(purpose)) // purpose
-      .derive(harden(coinType)) // coin_type
-      .derive(harden(accIndex));   // account #0
+      .derive(harden(purpose))   // purpose
+      .derive(harden(coinType))  // coin_type
+      .derive(harden(accIndex)); // account #0
   }catch( error ){
     console.log(error);
     return(error);
