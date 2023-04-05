@@ -1,4 +1,4 @@
-![spaceprinter_logo_V1](https://user-images.githubusercontent.com/50184793/158988554-897dfbab-ad58-4957-a183-4a2e8d72c6e9.png)
+*** Manufacturing Box***
 
 Manufacturing Box is a linux distribution that runs on a Raspberry Pi and allows you to plug your 3D printer into the Cardano blockchain.
 By allowing your 3D printer to part of the Cardano Network and registered with the Adosia market place we are enabling 3D printing manufacturing into peoples houses.
@@ -99,7 +99,7 @@ https://user-images.githubusercontent.com/50184793/169320539-3fb5e658-35b3-4f4c-
     
   Manufacturing Box firmware brings a frontend dashboard that connects you to the cardano blockchain to access teh Adosia 3d printing smart contract.
 
-   Manufacturing Box connects to Cardano blockchain through Noderunners hosted node or Blockfrost for those that don't wish to run their own node.
+  Manufacturing Box connects to Cardano blockchain through Noderunners hosted node or Blockfrost for those that don't wish to run their own node.
 
   It utilizes https://open-rpc.org/ to generate and spec out the JSON-RPC 2.0 based backend api and front end client for React.
 
