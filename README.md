@@ -1,6 +1,6 @@
 ![spaceprinter_logo_V1](https://user-images.githubusercontent.com/50184793/158988554-897dfbab-ad58-4957-a183-4a2e8d72c6e9.png)
 
-Space Printer is a linux distribution that runs on a Raspberry Pi and allows you to plug your printer into the Cardano blockchain.
+Manufacturing Box is a linux distribution that runs on a Raspberry Pi and allows you to plug your 3D printer into the Cardano blockchain.
 By allowing your 3D printer to part of the Cardano Network and registered with the Adosia market place we are enabling 3D printing manufacturing into peoples houses.
 
 **Videos**
@@ -61,19 +61,19 @@ https://user-images.githubusercontent.com/50184793/166266598-8e4d21e6-84c6-4fc6-
 </details>
 
 <details>
-  <summary><b>Spaceprinter Wallet Explained</b></summary>
+  <summary><b>Wallet Explained</b></summary>
 
 https://user-images.githubusercontent.com/50184793/169544225-3d86764b-713d-4d65-8e0e-546bc578aab0.mp4
 </details>
 
 <details>
-  <summary><b>Blockfrost VS Cardanobox</b></summary>
+  <summary><b>Blockfrost VS Noderunner</b></summary>
 
 https://user-images.githubusercontent.com/50184793/169318248-05739bd3-a60e-42db-9e24-cb3f87fbd868.mp4
 </details>
 
 <details>
-  <summary><b>Space Printer Updater Client</b></summary>
+  <summary><b>Updater Client</b></summary>
 
 https://user-images.githubusercontent.com/50184793/169320539-3fb5e658-35b3-4f4c-ab59-2720fd574611.mp4
 </details>
@@ -97,24 +97,24 @@ https://user-images.githubusercontent.com/50184793/169320539-3fb5e658-35b3-4f4c-
   Image is based on Ubuntu 22.04.
   <blockquote>
     
-  Space Printer firmware brings a frontend dashboard that connects you to the cardano blockchain to access teh Adosia 3d printing smart contract.
+  Manufacturing Box firmware brings a frontend dashboard that connects you to the cardano blockchain to access teh Adosia 3d printing smart contract.
 
-  Space printer connects to Cardano blockchain through Cardano Box's hosted node or Blockfrost for those that don't wish to run their own node.
+   Manufacturing Box connects to Cardano blockchain through Noderunners hosted node or Blockfrost for those that don't wish to run their own node.
 
   It utilizes https://open-rpc.org/ to generate and spec out the JSON-RPC 2.0 based backend api and front end client for React.
 
-  The idea of Space Printer dapp is to have it work directly on Raspberry Pi hardware that is connected to your 3D printers serial port.
+  The idea of Manufacturing Box dapp is to have it work directly on Raspberry Pi hardware that is connected to your 3D printers serial port.
   Now days most serial ports on 3D printers are emulated through USB.
 
   Also this takes in mind that you're running a 3D printer that supports Marlin Firmware G-Code commands which is something like 95% of all 3D printers.
   However if you're running a specialty 3D printer and you have serial access to it, we will be more than happy to work with you to support as many 3D     printers out of the box as we can.
 
-  Space Printer needs to be able to access the Cardano blockchain to pull information about print jobs from the Adosia market place smart contracts.
+  Manufacturing Box needs to be able to access the Cardano blockchain to pull information about print jobs from the Adosia market place smart contracts.
   And to create transactions like minting your registration NFT and accepting print jobs etc etc.
 
-  The dapp/firmware is currently setup to use Blockfrost, for which you can get a free API key that gives you up to 50k requests a day which is MORE       than enough for Space Printer. You will also be able to reuse the API key on more than one device.
+  The dapp/firmware is currently setup to use Blockfrost, for which you can get a free API key that gives you up to 50k requests a day which is MORE       than enough for Manufacturing Box. You will also be able to reuse the API key on more than one device.
 
-  Second solution is running Cardano Box From Adosia. Cardano Box runs tools like Ogmios and Kupo that are hooked up to the Cardano Node directly. If you   have the know how on how to setup Ogmios and Kup and Cardano-node on your own hardware you can point Space Printer towards that as well.
+  Second solution is running Cardano Box From Adosia. Cardano Box runs tools like Ogmios and Kupo that are hooked up to the Cardano Node directly. If you   have the know how on how to setup Ogmios and Kup and Cardano-node on your own hardware you can point Manufacturing Box towards that as well.
   </blockquote>
 </details>
 
@@ -131,14 +131,14 @@ https://user-images.githubusercontent.com/50184793/169320539-3fb5e658-35b3-4f4c-
   <summary><b>Materials</b></summary>
   
 <blockquote> 
-Currently Space Printer is supported on all Raspberry PI3 and above. You can atually burn the image onto a SD Card or USB Drive and switch it on the go between different Raspberry Pis.
+Currently Manufacturing Box is supported on all Raspberry PI3 and above. You can atually burn the image onto a SD Card or USB Drive and switch it on the go between different Raspberry Pis.
 
 Few things to keep in mind. Using certain Raspberry Pi's come with certian restrictions outlined below:
   
 **SD Cards**: Even though this image is supported on SD Cards and using certain Raspberry Pi models will give you no choice but to use a SD Card. I am not a SD Card fan, they're not too reliable and painfully slow but get the job done most of the time. However as long as you save your printer seed phrases.
 due to decentralization and data being stored on the Cardano network recovering from a crashed SD card or system in general is rather painless.
   
-**Slicer**: Space Printer has the capability to run Kiri:Moto Slicer locally, but it won't let you set it up unless you're using a device with 2Gb or more.
+**Slicer**:  Manufacturing Box has the capability to run Kiri:Moto Slicer locally, but it won't let you set it up unless you're using a device with 2Gb or more.
   
 **Raspberry Pi 3A+**: This is a great little 512Ram Quad Corce devvice wtih build in WiFi, SD Card port and 1xUSB2.0 port. Using this device you will need to setup a file with your WiFi credentials describe int he instructions and you can only use an SD card do to it only hacing one USB port which use going to be use to plug into your 3D printer.
   
@@ -173,12 +173,12 @@ due to decentralization and data being stored on the Cardano network recovering 
 </details>
 
 <details>
-  <summary><b>Using Space Printer</b></summary>
+  <summary><b>Using Manufacturing Box</b></summary>
   
 <blockquote>
-  Keep in mind the Space Printer dapp is still in very early Development Beta stages.
+  Keep in mind theManufacturing Box dapp is still in very early Development Beta stages.
   
-  Once you have your Raspberry Pi running with the Space Printer firmware and connected to your network. You should be able to open up any web browser      and type in `http://spaceprinter.local` in the address bar and it should bring up the Space Printer UI.
+  Once you have your Raspberry Pi running with the Manufacturing Box firmware and connected to your network. You should be able to open up any web browser      and type in `http://spaceprinter.local` in the address bar and it should bring up the Manufacturing Box UI.
 
   From there you can select your session type, meaning how is the dapp accessing the Cardano Blockchain as explained above, you can choose `Blockfrost`     or `Cardano Box`.
 
@@ -188,7 +188,7 @@ due to decentralization and data being stored on the Cardano network recovering 
   
   If for some reason you're getting Auth Errors or no account on either solution and you can't remember your passwords. You can use the WIPE db solution,   keep in mind this will also wipe any wallet information you had on the device. However you can easily recover your wallets with your seed phrase and     all the data will resync from the Cardano Blockchain (FUCK YEAH DECENTRALIZATION)!!!
   
-  Next step is to setup your printer wallet with one of two options, generate a new one or recover from seed phrase. Either option you chose you will       need to have your Space Printer device connected to your printer via USB and make sure it has a serial connection.
+  Next step is to setup your printer wallet with one of two options, generate a new one or recover from seed phrase. Either option you chose you will       need to have your Manufacturing Box device connected to your printer via USB and make sure it has a serial connection.
   
   Once your wallet is setup you will need to make sure it's funded with enough ADA to complete registration transactions if it's a new wallet and to pick   up new print jobs or complete current ones.
 </blockquote>
